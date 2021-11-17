@@ -1,0 +1,59 @@
+using System;
+namespace InsertsortDemo
+{
+    class Insertsort
+    {
+        static void Main(string[] args)
+        {
+            //Trazanje od korisnika za broj clanova niza i dodeljivanje unesene vrednosti u n promenljivu. Takode deklarisanje nekoliko promenljivih koje se koriste kasnije u programu.
+            int i, j;
+            Console.WriteLine("Unesi koliko clanova ima nesortiran niz:");
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] niz = new int[n];
+            //Trazenje od korisnika za brojeve u nesortiranom nizu
+            Console.Write("Unesi brojeve u ovaj nesortiran niz: ");
+            int a, b;
+            i = 0;
+
+
+            //Petlja za ucitavanje brojeva u nizu, petlja se zavrsava nakon broja koji je prvi unesen(n).
+            while (i < n)
+            {
+                niz[i] = Convert.ToInt32(Console.ReadLine());
+                i++;
+            }
+            i = 1;
+
+            //Glavna petlja
+            //Petlja se pokrece n-1 puta i svaki put obraca se broju u nizu niz[i] (1,2,3,4,5,6...) i niz[i] onda proverava da li svi brojevi su manji od njega ako nisu onda menja mesta sa najmanjim ako ne onda ide na sledeci
+            while (i < n)
+            {
+                a = niz[i];
+                b = 0;
+                j = i - 1;
+                while (j >= 0 && b != 1)
+                {
+                    if (a < niz[j])
+                    {
+                        niz[j + 1] = niz[j];
+                        j--;
+                        niz[j + 1] = a;
+                    }
+                    else b = 1;
+                }
+                i++;
+            }
+
+
+
+
+            //Ucitavanje Sortiranog niza sa jednostavne petlje
+            Console.Write("\nSortirani niz je: ");
+            for (i = 0; i < n; i++)
+            {
+                Console.Write(niz[i] + " ");
+            }
+        }
+    }
+}
